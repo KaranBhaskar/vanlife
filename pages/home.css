@@ -1,0 +1,46 @@
+.home {
+  background-image: url("../src/image\ 53.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: Inter, sans-serif;
+}
+
+.home h1 {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 2.625rem;
+}
+
+.home a {
+  background-color: #ff8c38;
+  color: #fff7ed;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: center;
+  padding: 9px;
+  margin-top: 2rem;
+}
+
+.home p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+}
+.container {
+  width: 31.25rem;
+}
