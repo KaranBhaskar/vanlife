@@ -11,7 +11,9 @@ export default function Home() {
           Add adventure to your life by joining the #vanlife movement.
           <br /> Rent the perfect van to make your perfect road trip.
         </p>
-        <Link to="./about">Find you van</Link>
+        <Link className="btn-og" to="./vans">
+          Find you van
+        </Link>
       </div>
     </div>
   );

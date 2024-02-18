@@ -15,7 +15,9 @@ export default function Nav() {
           </span>
         </li>
         <li>
-          <span className="line">Vans</span>
+          <span className={location == "/vans" ? "line selected" : "line"}>
+            <Link to="/vans">Vans</Link>
+          </span>
         </li>
       </ul>
     </div>

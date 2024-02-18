@@ -1,0 +1,71 @@
+.van {
+  flex-grow: 1;
+  background-color: #fff7ed;
+  padding: 1.625rem;
+  display: flex;
+  flex-direction: column;
+}
+.nav-style {
+  color: #4d4d4d;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4375rem;
+  border: none;
+  background-color: #fff7ed;
+  border-bottom: 0.0862rem solid #4d4d4d;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin: 0 auto 2.5rem 0.9375rem;
+}
+
+.nav-style::before {
+  content: "\2190";
+  position: absolute;
+  left: -0.9375rem;
+}
+
+.nav-style:hover {
+  color: #201f1d;
+  border-bottom: 0.0862px solid #201f1d;
+}
+
+.van > .tag {
+  margin-top: 3.125rem;
+  margin-bottom: 1.3125rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700px;
+  line-height: 2.0625rem;
+  margin-bottom: 9px;
+}
+
+p > span {
+  font-family: Avenir Next;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 2.8125rem;
+}
+
+p:has(span) {
+  font-size: 24px;
+  line-height: 2.8125rem;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 9;
+}
+
+.desc {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.btn-og {
+  margin-top: 1.5625rem;
+  margin-bottom: 5rem;
+}

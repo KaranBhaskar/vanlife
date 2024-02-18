@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import "./About.css";
 
 export default function About() {
@@ -28,7 +28,7 @@ export default function About() {
             <br />
             Your van is ready.
           </h3>
-          <a href="#">Explore our vans</a>
+          <Link to="/vans">Explore our vans</Link>
         </div>
       </div>
     </div>
