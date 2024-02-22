@@ -1,6 +1,5 @@
 .vans {
-  flex-grow: 1;
-  background-color: #fff7ed;
+  height: 100%;
   color: #161616;
   padding: 1.625rem;
 }
@@ -24,13 +23,26 @@ p {
   margin: 9px 0;
 }
 
+a {
+  color: #161616;
+}
 .van-price {
   display: inline-flex;
   justify-content: space-between;
   width: 100%;
+  position: relative;
 }
-.van--price-day .van--price-day {
+
+.van--price-day {
   position: absolute;
+  right: 0;
+  top: 50%;
+  font-family: Avenir Next;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: right;
 }
 
 .vans-cards {

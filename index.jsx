@@ -1,26 +1,47 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Navbar from "./pages/navbar";
 import Home from "./pages/home";
+import Vans from "./pages/Vans";
 import About from "./pages/About";
-import Footer from "./pages/Footer";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Van from "./pages/Van";
+import Layout from "./pages/layout";
+import Host from "./pages/host/host";
+import Income from "./pages/host/Income";
+import Reviews from "./pages/host/Reviews";
+import HostLayout from "./pages/host/HostLayout";
+import { BrowserRouter, Routes, Route, RouterProvider } from "react-router-dom";
+import "./server";
+import HostVan from "./pages/host/HostVan";
+import HostVanId from "./pages/host/HostVanId";
+import HostVanIdDetails from "./pages/host/HostVanIdDetails";
+import HostVanIdPhotos from "./pages/host/HostVanIdPhotos";
+import HostVanIdPricing from "./pages/host/HostVanIdPricing";
 
 function App() {
   return (
-    <>
-      <Navbar />
+    <BrowserRouter>
       <Routes>
-        <Route path="" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="vans" element={<Vans />} />
+          <Route path="vans/:id" element={<Van />} />
+
+          <Route path="/host" element={<HostLayout />}>
+            <Route index element={<Host />} />
+            <Route path="income" element={<Income />} />
+            <Route path="reviews" element={<Reviews />} />
+            <Route path="vans" element={<HostVan />} />
+            <Route path="vans/:id" element={<HostVanId />}>
+              <Route index element={<HostVanIdDetails />} />
+              <Route path="pricing" element={<HostVanIdPricing />} />
+              <Route path="photos" element={<HostVanIdPhotos />} />
+            </Route>
+          </Route>
+        </Route>
       </Routes>
-      <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);

@@ -12,7 +12,6 @@
   line-height: 1.4375rem;
   border: none;
   background-color: #fff7ed;
-  border-bottom: 0.0862rem solid #4d4d4d;
   position: relative;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -27,7 +26,6 @@
 
 .nav-style:hover {
   color: #201f1d;
-  border-bottom: 0.0862px solid #201f1d;
 }
 
 .van > .tag {

@@ -1,0 +1,44 @@
+.host-van {
+  margin-top: 2.3rem;
+}
+
+.host-van-details {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.host-van-detail {
+  margin-top: 2.3125rem;
+  padding: 1.5rem;
+  background: #fff;
+}
+.hostVanNav {
+  background-color: inherit;
+}
+.host-van img {
+  width: 160px;
+  height: 160px;
+}
+.host-van .profile-img {
+  width: 100px;
+  height: 100px;
+}
+
+.host-van-details h2,
+.host-van-details p {
+  margin: 0;
+}
+
+.host-van-details h2 {
+  margin-top: 1rem;
+  font-family: Inter;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.host-van-details .tag {
+  margin-top: 1.9375rem;
+}

@@ -1,22 +1,37 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./van.css";
 
-export default function Van({ children, handleClick }) {
+export default function Van() {
+  const [van, setVan] = React.useState({});
+
+  const location = "/api" + useLocation().pathname;
+  React.useEffect(() => {
+    fetch(location)
+      .then((res) => res.json())
+      .then((data) => setVan(data.vans));
+  }, []);
+
+  let classes = "tag";
+  if (van["type"] === "rugged") {
+    classes += " green";
+  } else if (van["type"] === "luxury") {
+    classes += " black";
+  }
   return (
     <div className="van">
-      <button className="nav-style" onClick={() => handleClick({})}>
+      <Link className="nav-style" to="/vans">
         Back to all vans
-      </button>
-      <img src={children["imageUrl"]} alt="image" />
-      <p className={children.class}>{children.type}</p>
-      <h2>{children.name}</h2>
+      </Link>
+      <img src={van.imageUrl} alt="image of the van" />
+      <p className={classes}>{van.type}</p>
+      <h2>{van.name}</h2>
       <p>
-        ${children.price}
-        <span>/day</span>
+        ${van.price}
+        <span className="price-span">/day</span>
       </p>
-      <p className="desc">{children.description}</p>
-      <Link className="btn-og" to=".">
+      <p className="desc">{van.description}</p>
+      <Link className="btn-og" to="/">
         Rent this Van
       </Link>
     </div>

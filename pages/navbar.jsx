@@ -1,8 +1,7 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Nav() {
-  const location = useLocation().pathname;
   return (
     <div className="nav">
       <h1>
@@ -10,14 +9,28 @@ export default function Nav() {
       </h1>
       <ul>
         <li>
-          <span className={location == "/about" ? "line selected" : "line"}>
-            <Link to="/about">About</Link>
-          </span>
+          <NavLink
+            to="/host"
+            className={({ isActive }) => (isActive ? "line selected" : "line")}
+          >
+            Host
+          </NavLink>
         </li>
         <li>
-          <span className={location == "/vans" ? "line selected" : "line"}>
-            <Link to="/vans">Vans</Link>
-          </span>
+          <NavLink
+            to="/about"
+            className={({ isActive }) => (isActive ? "line selected" : "line")}
+          >
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/vans"
+            className={({ isActive }) => (isActive ? "line selected" : "line")}
+          >
+            Vans
+          </NavLink>
         </li>
       </ul>
     </div>

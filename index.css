@@ -38,6 +38,9 @@ body {
   padding-right: 26px;
 }
 
+.nav > h1 > a {
+  color: #161616;
+}
 .nav > h1 {
   font-size: 25px;
   font-weight: 900;
@@ -82,4 +85,48 @@ footer h3 {
   line-height: 1.4375rem;
   text-align: center;
   font-weight: 500;
+}
+
+.btn-og {
+  background-color: #ff8c38;
+  color: #fff7ed;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: center;
+  padding: 9px;
+  margin-top: 2rem;
+}
+
+.tag {
+  color: #ffead0;
+  background-color: #e17654;
+  display: inline-block;
+  margin: 0;
+  margin-right: auto;
+  font-size: 1rem;
+  padding: 0.125rem 0.875rem;
+  border-radius: 5px;
+}
+
+.tag::first-letter {
+  text-transform: uppercase;
+}
+
+.black {
+  background-color: #161616;
+}
+
+.green {
+  background-color: #115e59;
+}
+
+main {
+  flex-grow: 1;
+  background-color: #fff7ed;
+  padding-left: 1.625rem;
+  padding-right: 1.625rem;
 }

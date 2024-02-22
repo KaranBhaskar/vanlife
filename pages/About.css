@@ -1,6 +1,5 @@
 .about {
-  flex-grow: 1;
-  background-color: #fff7ed;
+  height: 100%;
 }
 .hero-img {
   background-image: url("../src/image\ 54.png");
@@ -13,6 +12,14 @@
 .about-info {
   padding: 1.625rem;
   margin-top: 1.375rem;
+}
+.about-info p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 .about-info-card {

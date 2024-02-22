@@ -1,0 +1,10 @@
+.hostnav ul {
+  margin-left: 0;
+  margin-right: auto;
+  gap: 1.25rem;
+  padding: 0;
+}
+
+.hostnav {
+  padding: 0;
+}
