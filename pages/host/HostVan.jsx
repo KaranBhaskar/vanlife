@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { getHostVans } from "../../api";
 import "./HostVan.css";
 
 export default function HostVan() {
-  const [vans, setVans] = React.useState([]);
-
-  const location = "/api/host/vans";
+  const [vans, setVans] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   React.useEffect(() => {
-    fetch(location)
-      .then((res) => res.json())
-      .then((data) => setVans(data.vans));
+    setLoading(true);
+    getHostVans()
+      .then((data) => setVans(data.vans))
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
   }, []);
   const vansElement = vans.map((van) => (
     <Link to={`/host/vans/${van.id}`} className="vansElement" key={van.id}>
@@ -23,8 +26,16 @@ export default function HostVan() {
   ));
   return (
     <>
-      <h2>Your listed vans</h2>
-      {vansElement}
+      {error ? (
+        <h1 style={{ textAlign: "center", color: "red" }}>
+          {error.status}: {error.message}
+        </h1>
+      ) : (
+        <>
+          <h2>Your listed vans</h2>
+          {loading ? <h3>Loading</h3> : vansElement}
+        </>
+      )}
     </>
   );
 }

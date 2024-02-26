@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Link, useSearchParams } from "react-router-dom";
 import "./Vans.css";
+import { getAVan } from "../api";
 
 export default function Vans() {
   const [vans, setVans] = React.useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const type = searchParams.get("type");
 
   const newvans = type
     ? vans.filter((van) => van.type.toLowerCase() === type)
     : vans;
   React.useEffect(() => {
-    fetch("/api/vans")
-      .then((res) => res.json())
-      .then((data) => setVans(data["vans"]));
+    setLoading(true);
+    getAVan()
+      .then((data) => setVans(data.vans))
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
   }, []);
 
   const vansCard = newvans.map((van) => {
@@ -59,38 +64,56 @@ export default function Vans() {
     });
   }
   return (
-    <div className="vans">
-      <h1>Explore Our van options</h1>
-      <div className="filter-div">
-        <NavLink
-          to={handleClick("type", "simple")}
-          className={({ isActive }) => (isActive ? "filter og" : "filter")}
-        >
-          Simple
-        </NavLink>
-        <button
-          onClick={() => handleQuery("type", "rugged")}
-          style={{ border: "none", padding: "6px 26px" }}
-          className={"type green"}
-        >
-          Rugged
-        </button>
-        <NavLink
-          to="?type=luxury"
-          className={({ isActive }) => (isActive ? "filter black" : "filter")}
-        >
-          Luxury
-        </NavLink>
-        {searchParams.has("type") && (
-          <button
-            onClick={() => handleQuery("type", null)}
-            className="nav-style clear-filter"
-          >
-            Clear filter
-          </button>
-        )}
-      </div>
-      <div className="vans-cards">{vansCard}</div>
-    </div>
+    <>
+      {error ? (
+        <h1 style={{ textAlign: "center", color: "red" }}>
+          {error.status} {error.message}
+        </h1>
+      ) : (
+        <div className="vans">
+          <h1>Explore Our van options</h1>
+          {loading ? (
+            <h2>Loading...</h2>
+          ) : (
+            <>
+              <div className="filter-div">
+                <NavLink
+                  to={handleClick("type", "simple")}
+                  className={({ isActive }) =>
+                    isActive ? "filter og" : "filter"
+                  }
+                >
+                  Simple
+                </NavLink>
+                <button
+                  onClick={() => handleQuery("type", "rugged")}
+                  style={{ border: "none", padding: "6px 26px" }}
+                  className={"type green"}
+                >
+                  Rugged
+                </button>
+                <NavLink
+                  to="?type=luxury"
+                  className={({ isActive }) =>
+                    isActive ? "filter black" : "filter"
+                  }
+                >
+                  Luxury
+                </NavLink>
+                {searchParams.has("type") && (
+                  <button
+                    onClick={() => handleQuery("type", null)}
+                    className="nav-style clear-filter"
+                  >
+                    Clear filter
+                  </button>
+                )}
+              </div>
+              <div className="vans-cards">{vansCard}</div>
+            </>
+          )}
+        </div>
+      )}
+    </>
   );
 }
