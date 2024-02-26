@@ -16,6 +16,8 @@ import HostVanId from "./pages/host/HostVanId";
 import HostVanIdDetails from "./pages/host/HostVanIdDetails";
 import HostVanIdPhotos from "./pages/host/HostVanIdPhotos";
 import HostVanIdPricing from "./pages/host/HostVanIdPricing";
+import Login from "./pages/login";
+import Authenticate from "./pages/Authenticate";
 
 function App() {
   return (
@@ -26,16 +28,19 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<Van />} />
+          <Route path="login" element={<Login />} />
 
-          <Route path="/host" element={<HostLayout />}>
-            <Route index element={<Host />} />
-            <Route path="income" element={<Income />} />
-            <Route path="reviews" element={<Reviews />} />
-            <Route path="vans" element={<HostVan />} />
-            <Route path="vans/:id" element={<HostVanId />}>
-              <Route index element={<HostVanIdDetails />} />
-              <Route path="pricing" element={<HostVanIdPricing />} />
-              <Route path="photos" element={<HostVanIdPhotos />} />
+          <Route element={<Authenticate />}>
+            <Route path="/host" element={<HostLayout />}>
+              <Route index element={<Host />} />
+              <Route path="income" element={<Income />} />
+              <Route path="reviews" element={<Reviews />} />
+              <Route path="vans" element={<HostVan />} />
+              <Route path="vans/:id" element={<HostVanId />}>
+                <Route index element={<HostVanIdDetails />} />
+                <Route path="pricing" element={<HostVanIdPricing />} />
+                <Route path="photos" element={<HostVanIdPhotos />} />
+              </Route>
             </Route>
           </Route>
         </Route>

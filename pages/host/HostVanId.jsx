@@ -22,7 +22,7 @@ export default function HostVanId() {
   }
   return (
     <div className="host-van">
-      <Link className="nav-style" to="/host/vans">
+      <Link className="nav-style" to=".." relative="path">
         Back to all vans
       </Link>
       {Object.keys(van).length != 0 && (
